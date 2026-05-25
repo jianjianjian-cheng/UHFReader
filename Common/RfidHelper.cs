@@ -61,26 +61,42 @@ namespace UHFReader.Common
 
       int fCmdRet = StaticClassReaderB.Inventory_G2(ref comAdr, AdrTID, LenTID, TIDFlag, EPC, ref Totallen, ref CardNum, PortHandle);
 
-      if (fCmdRet == 0 && CardNum > 0)
+      if ((fCmdRet == 1) || (fCmdRet == 2) || (fCmdRet == 3) || (fCmdRet == 4) || (fCmdRet == 0xFB) || (fCmdRet == 0))
       {
-        byte[] daw = new byte[Totallen];
-        Array.Copy(EPC, daw, Totallen);
-        string temps = System.Text.Encoding.ASCII.GetString(daw);
-
-        int m = 0;
-        while (m < CardNum)
+        if (CardNum > 0)
         {
-          int EPClen = daw[m];
-          string sEPC = temps.Substring(m * 2 + 2, EPClen * 2);
-          m = m + EPClen + 1;
-          if (sEPC.Length == EPClen * 2 && !string.IsNullOrEmpty(sEPC))
+          byte[] daw = new byte[Totallen];
+          Array.Copy(EPC, daw, Totallen);
+          string temps = ByteArrayToHexString(daw);
+
+          int m = 0;
+          for (int cardIndex = 0; cardIndex < CardNum; cardIndex++)
           {
-            tagList.Add(sEPC);
+            int EPClen = daw[m];
+            string sEPC = temps.Substring(m * 2 + 2, EPClen * 2);
+            m = m + EPClen + 1;
+            if (sEPC.Length == EPClen * 2 && !string.IsNullOrEmpty(sEPC))
+            {
+              tagList.Add(sEPC);
+            }
           }
         }
       }
 
       return tagList;
+    }
+
+    private static string ByteArrayToHexString(byte[] data)
+    {
+      string temp = "";
+      for (int i = 0; i < data.Length; i++)
+      {
+        if (data[i] < 16)
+          temp += "0" + data[i].ToString("X");
+        else
+          temp += data[i].ToString("X");
+      }
+      return temp;
     }
 
     public static string InventorySingleTag()

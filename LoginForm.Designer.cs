@@ -25,6 +25,7 @@ namespace UHFReader
       this.btnCancel = new System.Windows.Forms.Button();
       this.lblUsernameIcon = new System.Windows.Forms.Label();
       this.lblPasswordIcon = new System.Windows.Forms.Label();
+      this.lblDescription = new System.Windows.Forms.Label();
       this.panelMain.SuspendLayout();
       this.panelLoginBox.SuspendLayout();
       this.SuspendLayout();
@@ -157,7 +158,24 @@ namespace UHFReader
       this.panelLoginBox.Controls.Add(this.btnLogin);
       this.panelLoginBox.Controls.Add(this.btnCancel);
 
+      this.lblDescription.AutoSize = false;
+      this.lblDescription.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+      this.lblDescription.ForeColor = System.Drawing.Color.FromArgb(120, 130, 150);
+      this.lblDescription.Location = new System.Drawing.Point(50, 520);
+      this.lblDescription.Name = "lblDescription";
+      this.lblDescription.Size = new System.Drawing.Size(700, 60);
+      this.lblDescription.TabIndex = 10;
+      this.lblDescription.Text = "📋 系统功能：\r\n" +
+        "• 药品管理：添加、编辑、删除药品信息\r\n" +
+        "• 标签绑定：将RFID标签与药品信息绑定\r\n" +
+        "• 出入库管理：记录药品入库和出库操作\r\n" +
+        "• 库存查询：实时查看药品库存数量\r\n" +
+        "• 记录查询：追溯所有出入库历史记录\r\n" +
+        "• RFID读写：支持标签扫描、读取和写入";
+      this.lblDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+
       this.panelMain.Controls.Add(this.panelLoginBox);
+      this.panelMain.Controls.Add(this.lblDescription);
 
       this.AcceptButton = this.btnLogin;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -185,5 +203,6 @@ namespace UHFReader
     private System.Windows.Forms.TextBox txtPassword;
     private System.Windows.Forms.Button btnLogin;
     private System.Windows.Forms.Button btnCancel;
+    private System.Windows.Forms.Label lblDescription;
   }
 }
