@@ -26,9 +26,11 @@ namespace UHFReader
       this.lblTagStatus = new System.Windows.Forms.Label();
       this.btnIn = new System.Windows.Forms.Button();
       this.btnOut = new System.Windows.Forms.Button();
+      this.btnScan = new System.Windows.Forms.Button();
       this.panelRight = new System.Windows.Forms.Panel();
       this.dgvRecords = new System.Windows.Forms.DataGridView();
       this.btnRefresh = new System.Windows.Forms.Button();
+      this.scanTimer = new System.Windows.Forms.Timer();
       this.panelTop.SuspendLayout();
       this.panelLeft.SuspendLayout();
       this.panelRight.SuspendLayout();
@@ -71,7 +73,7 @@ namespace UHFReader
       this.panelLeft.Location = new System.Drawing.Point(15, 75);
       this.panelLeft.Name = "panelLeft";
       this.panelLeft.Padding = new System.Windows.Forms.Padding(20);
-      this.panelLeft.Size = new System.Drawing.Size(380, 280);
+      this.panelLeft.Size = new System.Drawing.Size(380, 350);
       this.panelLeft.TabIndex = 1;
 
       int labelY = 20;
@@ -157,6 +159,24 @@ namespace UHFReader
       this.btnOut.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
 
+      int scanBtnY = btnY + btnHeight + 20;
+      this.btnScan.BackColor = System.Drawing.Color.FromArgb(70, 130, 200);
+      this.btnScan.FlatAppearance.BorderSize = 0;
+      this.btnScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnScan.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Bold);
+      this.btnScan.ForeColor = System.Drawing.Color.White;
+      this.btnScan.Location = new System.Drawing.Point(20, scanBtnY);
+      this.btnScan.Name = "btnScan";
+      this.btnScan.Size = new System.Drawing.Size(310, 40);
+      this.btnScan.TabIndex = 7;
+      this.btnScan.Text = "📡 扫描标签";
+      this.btnScan.UseVisualStyleBackColor = false;
+      this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
+      this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
+
+      this.scanTimer.Interval = 500;
+      this.scanTimer.Tick += new System.EventHandler(this.scanTimer_Tick);
+
       this.panelLeft.Controls.Add(this.lblEpc);
       this.panelLeft.Controls.Add(this.txtEpc);
       this.panelLeft.Controls.Add(this.lblMedicine);
@@ -164,6 +184,7 @@ namespace UHFReader
       this.panelLeft.Controls.Add(this.lblTagStatus);
       this.panelLeft.Controls.Add(this.btnIn);
       this.panelLeft.Controls.Add(this.btnOut);
+      this.panelLeft.Controls.Add(this.btnScan);
 
       this.panelRight.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
       this.panelRight.Location = new System.Drawing.Point(410, 75);
@@ -254,7 +275,9 @@ namespace UHFReader
     private System.Windows.Forms.Label lblTagStatus;
     private System.Windows.Forms.Button btnIn;
     private System.Windows.Forms.Button btnOut;
+    private System.Windows.Forms.Button btnScan;
     private System.Windows.Forms.DataGridView dgvRecords;
     private System.Windows.Forms.Button btnRefresh;
+    private System.Windows.Forms.Timer scanTimer;
   }
 }

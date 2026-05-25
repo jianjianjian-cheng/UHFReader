@@ -12,6 +12,7 @@ namespace UHFReader
     private TransactionRecordBll _transactionBll = new TransactionRecordBll();
     private RfidTagBll _tagBll = new RfidTagBll();
     private MedicineBll _medicineBll = new MedicineBll();
+    private bool isScanning = false;
 
     public InOutForm()
     {
@@ -134,6 +135,69 @@ namespace UHFReader
     private void btnClose_Click(object sender, EventArgs e)
     {
       this.Hide();
+    }
+
+    private void btnScan_Click(object sender, EventArgs e)
+    {
+      if (!RfidHelper.IsConnected)
+      {
+        MessageBox.Show("请先在RFID读写器界面打开端口！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+      }
+
+      isScanning = !isScanning;
+      if (isScanning)
+      {
+        btnScan.Text = "⏹ 停止扫描";
+        btnScan.BackColor = System.Drawing.Color.FromArgb(230, 80, 80);
+        lblTagStatus.ForeColor = System.Drawing.Color.LightBlue;
+        lblTagStatus.Text = "标签状态: 扫描中...";
+        scanTimer.Start();
+      }
+      else
+      {
+        btnScan.Text = "📡 扫描标签";
+        btnScan.BackColor = System.Drawing.Color.FromArgb(70, 130, 200);
+        lblTagStatus.ForeColor = System.Drawing.Color.LightGreen;
+        scanTimer.Stop();
+      }
+    }
+
+    private void scanTimer_Tick(object sender, EventArgs e)
+    {
+      string epc = RfidHelper.InventorySingleTag();
+      if (!string.IsNullOrEmpty(epc))
+      {
+        txtEpc.Text = epc;
+
+        var tag = _tagBll.GetTagByEpc(epc);
+        if (tag != null)
+        {
+          if (tag.MedicineId.HasValue)
+          {
+            var medicine = _medicineBll.GetMedicineById(tag.MedicineId.Value);
+            if (medicine != null)
+            {
+              cmbMedicine.SelectedValue = medicine.Id;
+              lblTagStatus.ForeColor = System.Drawing.Color.LightGreen;
+              lblTagStatus.Text = $"标签状态: {GetStatusText(tag.Status)}";
+            }
+          }
+          else
+          {
+            lblTagStatus.ForeColor = System.Drawing.Color.Yellow;
+            lblTagStatus.Text = "标签状态: 未绑定药品";
+            cmbMedicine.SelectedIndex = -1;
+          }
+        }
+        else
+        {
+          lblTagStatus.ForeColor = System.Drawing.Color.Red;
+          lblTagStatus.Text = "标签状态: 未绑定（新标签）";
+          cmbMedicine.SelectedIndex = -1;
+          MessageBox.Show("该标签尚未绑定药品，请先在标签绑定界面进行绑定！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+      }
     }
   }
 }
