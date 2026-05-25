@@ -24,6 +24,8 @@ namespace UHFReader
       this.lblMedicine = new System.Windows.Forms.Label();
       this.cmbMedicine = new System.Windows.Forms.ComboBox();
       this.lblTagStatus = new System.Windows.Forms.Label();
+      this.lblQuantity = new System.Windows.Forms.Label();
+      this.numQuantity = new System.Windows.Forms.NumericUpDown();
       this.btnIn = new System.Windows.Forms.Button();
       this.btnOut = new System.Windows.Forms.Button();
       this.btnScan = new System.Windows.Forms.Button();
@@ -70,7 +72,7 @@ namespace UHFReader
       this.panelTop.Controls.Add(this.btnClose);
 
       this.panelLeft.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
-      this.panelLeft.Location = new System.Drawing.Point(15, 75);
+      this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
       this.panelLeft.Name = "panelLeft";
       this.panelLeft.Padding = new System.Windows.Forms.Padding(20);
       this.panelLeft.Size = new System.Drawing.Size(380, 350);
@@ -119,15 +121,37 @@ namespace UHFReader
       this.cmbMedicine.TabIndex = 3;
 
       labelY += spacing;
+      inputY += spacing;
+      this.lblQuantity.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F);
+      this.lblQuantity.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+      this.lblQuantity.Location = new System.Drawing.Point(20, labelY);
+      this.lblQuantity.Name = "lblQuantity";
+      this.lblQuantity.Size = new System.Drawing.Size(80, 25);
+      this.lblQuantity.TabIndex = 4;
+      this.lblQuantity.Text = "数量:";
+
+      this.numQuantity.BackColor = System.Drawing.Color.FromArgb(70, 80, 110);
+      this.numQuantity.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F);
+      this.numQuantity.ForeColor = System.Drawing.Color.White;
+      this.numQuantity.Location = new System.Drawing.Point(120, inputY);
+      this.numQuantity.Name = "numQuantity";
+      this.numQuantity.Size = new System.Drawing.Size(220, 28);
+      this.numQuantity.TabIndex = 5;
+      this.numQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
+      this.numQuantity.Minimum = 1;
+      this.numQuantity.Maximum = 9999;
+
+      labelY += spacing;
+      inputY += spacing;
       this.lblTagStatus.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F);
       this.lblTagStatus.ForeColor = System.Drawing.Color.LightGreen;
       this.lblTagStatus.Location = new System.Drawing.Point(20, labelY);
       this.lblTagStatus.Name = "lblTagStatus";
       this.lblTagStatus.Size = new System.Drawing.Size(320, 25);
-      this.lblTagStatus.TabIndex = 4;
+      this.lblTagStatus.TabIndex = 6;
       this.lblTagStatus.Text = "标签状态: 未扫描";
 
-      int btnY = 180;
+      int btnY = 250;
       int btnWidth = 150;
       int btnHeight = 50;
 
@@ -139,7 +163,7 @@ namespace UHFReader
       this.btnIn.Location = new System.Drawing.Point(20, btnY);
       this.btnIn.Name = "btnIn";
       this.btnIn.Size = new System.Drawing.Size(btnWidth, btnHeight);
-      this.btnIn.TabIndex = 5;
+      this.btnIn.TabIndex = 7;
       this.btnIn.Text = "📥 入库";
       this.btnIn.UseVisualStyleBackColor = false;
       this.btnIn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -153,7 +177,7 @@ namespace UHFReader
       this.btnOut.Location = new System.Drawing.Point(20 + btnWidth + 20, btnY);
       this.btnOut.Name = "btnOut";
       this.btnOut.Size = new System.Drawing.Size(btnWidth, btnHeight);
-      this.btnOut.TabIndex = 6;
+      this.btnOut.TabIndex = 8;
       this.btnOut.Text = "📤 出库";
       this.btnOut.UseVisualStyleBackColor = false;
       this.btnOut.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -168,7 +192,7 @@ namespace UHFReader
       this.btnScan.Location = new System.Drawing.Point(20, scanBtnY);
       this.btnScan.Name = "btnScan";
       this.btnScan.Size = new System.Drawing.Size(310, 40);
-      this.btnScan.TabIndex = 7;
+      this.btnScan.TabIndex = 9;
       this.btnScan.Text = "📡 扫描标签";
       this.btnScan.UseVisualStyleBackColor = false;
       this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -181,13 +205,15 @@ namespace UHFReader
       this.panelLeft.Controls.Add(this.txtEpc);
       this.panelLeft.Controls.Add(this.lblMedicine);
       this.panelLeft.Controls.Add(this.cmbMedicine);
+      this.panelLeft.Controls.Add(this.lblQuantity);
+      this.panelLeft.Controls.Add(this.numQuantity);
       this.panelLeft.Controls.Add(this.lblTagStatus);
       this.panelLeft.Controls.Add(this.btnIn);
       this.panelLeft.Controls.Add(this.btnOut);
       this.panelLeft.Controls.Add(this.btnScan);
 
       this.panelRight.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
-      this.panelRight.Location = new System.Drawing.Point(410, 75);
+      this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panelRight.Name = "panelRight";
       this.panelRight.Padding = new System.Windows.Forms.Padding(15);
       this.panelRight.Size = new System.Drawing.Size(775, 580);
@@ -231,6 +257,7 @@ namespace UHFReader
       };
       this.dgvRecords.EnableHeadersVisualStyles = false;
       this.dgvRecords.GridColor = System.Drawing.Color.FromArgb(90, 100, 130);
+      this.dgvRecords.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgvRecords.Location = new System.Drawing.Point(15, 55);
       this.dgvRecords.Name = "dgvRecords";
       this.dgvRecords.ReadOnly = true;
@@ -272,6 +299,8 @@ namespace UHFReader
     private System.Windows.Forms.TextBox txtEpc;
     private System.Windows.Forms.Label lblMedicine;
     private System.Windows.Forms.ComboBox cmbMedicine;
+    private System.Windows.Forms.Label lblQuantity;
+    private System.Windows.Forms.NumericUpDown numQuantity;
     private System.Windows.Forms.Label lblTagStatus;
     private System.Windows.Forms.Button btnIn;
     private System.Windows.Forms.Button btnOut;

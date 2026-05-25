@@ -16,12 +16,15 @@ namespace UHFReader
     private void InitializeComponent()
     {
       this.panelMain = new System.Windows.Forms.Panel();
+      this.cmbSavedAccounts = new System.Windows.Forms.ComboBox();
+      this.btnClearHistory = new System.Windows.Forms.Button();
       this.panelLoginBox = new System.Windows.Forms.Panel();
       this.lblTitle = new System.Windows.Forms.Label();
       this.lblSubtitle = new System.Windows.Forms.Label();
       this.txtUsername = new System.Windows.Forms.TextBox();
       this.txtPassword = new System.Windows.Forms.TextBox();
       this.btnLogin = new System.Windows.Forms.Button();
+      this.btnRegister = new System.Windows.Forms.Button();
       this.btnCancel = new System.Windows.Forms.Button();
       this.lblUsernameIcon = new System.Windows.Forms.Label();
       this.lblPasswordIcon = new System.Windows.Forms.Label();
@@ -37,10 +40,35 @@ namespace UHFReader
       this.panelMain.Size = new System.Drawing.Size(800, 600);
       this.panelMain.TabIndex = 0;
 
+      this.cmbSavedAccounts.BackColor = System.Drawing.Color.FromArgb(70, 80, 110);
+      this.cmbSavedAccounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbSavedAccounts.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
+      this.cmbSavedAccounts.ForeColor = System.Drawing.Color.White;
+      this.cmbSavedAccounts.FormattingEnabled = true;
+      this.cmbSavedAccounts.Location = new System.Drawing.Point(20, 20);
+      this.cmbSavedAccounts.Name = "cmbSavedAccounts";
+      this.cmbSavedAccounts.Size = new System.Drawing.Size(200, 28);
+      this.cmbSavedAccounts.TabIndex = 10;
+      this.cmbSavedAccounts.SelectedIndexChanged += new System.EventHandler(this.cmbSavedAccounts_SelectedIndexChanged);
+
+      this.btnClearHistory.BackColor = System.Drawing.Color.FromArgb(90, 100, 130);
+      this.btnClearHistory.FlatAppearance.BorderSize = 0;
+      this.btnClearHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnClearHistory.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+      this.btnClearHistory.ForeColor = System.Drawing.Color.White;
+      this.btnClearHistory.Location = new System.Drawing.Point(230, 20);
+      this.btnClearHistory.Name = "btnClearHistory";
+      this.btnClearHistory.Size = new System.Drawing.Size(80, 28);
+      this.btnClearHistory.TabIndex = 11;
+      this.btnClearHistory.Text = "清除历史";
+      this.btnClearHistory.UseVisualStyleBackColor = false;
+      this.btnClearHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+      this.btnClearHistory.Click += new System.EventHandler(this.btnClearHistory_Click);
+
       this.panelLoginBox.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
-      this.panelLoginBox.Location = new System.Drawing.Point(200, 100);
+      this.panelLoginBox.Location = new System.Drawing.Point(200, 80);
       this.panelLoginBox.Name = "panelLoginBox";
-      this.panelLoginBox.Size = new System.Drawing.Size(400, 400);
+      this.panelLoginBox.Size = new System.Drawing.Size(400, 420);
       this.panelLoginBox.TabIndex = 1;
 
       this.lblTitle.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold);
@@ -133,15 +161,29 @@ namespace UHFReader
       this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
 
+      this.btnRegister.BackColor = System.Drawing.Color.FromArgb(100, 180, 100);
+      this.btnRegister.FlatAppearance.BorderSize = 0;
+      this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnRegister.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
+      this.btnRegister.ForeColor = System.Drawing.Color.White;
+      this.btnRegister.Location = new System.Drawing.Point(40, 345);
+      this.btnRegister.Name = "btnRegister";
+      this.btnRegister.Size = new System.Drawing.Size(320, 35);
+      this.btnRegister.TabIndex = 9;
+      this.btnRegister.Text = "📝 注册新账号";
+      this.btnRegister.UseVisualStyleBackColor = false;
+      this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+      this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+
       this.btnCancel.BackColor = System.Drawing.Color.FromArgb(230, 80, 80);
       this.btnCancel.FlatAppearance.BorderSize = 0;
       this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
       this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(40, 345);
+      this.btnCancel.Location = new System.Drawing.Point(40, 390);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(320, 35);
-      this.btnCancel.TabIndex = 9;
+      this.btnCancel.TabIndex = 12;
       this.btnCancel.Text = "退 出";
       this.btnCancel.UseVisualStyleBackColor = false;
       this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -156,6 +198,7 @@ namespace UHFReader
       this.panelLoginBox.Controls.Add(this.txtPassword);
       this.panelLoginBox.Controls.Add(panelPasswordLine);
       this.panelLoginBox.Controls.Add(this.btnLogin);
+      this.panelLoginBox.Controls.Add(this.btnRegister);
       this.panelLoginBox.Controls.Add(this.btnCancel);
 
       this.lblDescription.AutoSize = false;
@@ -174,6 +217,8 @@ namespace UHFReader
         "• RFID读写：支持标签扫描、读取和写入";
       this.lblDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 
+      this.panelMain.Controls.Add(this.cmbSavedAccounts);
+      this.panelMain.Controls.Add(this.btnClearHistory);
       this.panelMain.Controls.Add(this.panelLoginBox);
       this.panelMain.Controls.Add(this.lblDescription);
 
@@ -202,7 +247,10 @@ namespace UHFReader
     private System.Windows.Forms.TextBox txtUsername;
     private System.Windows.Forms.TextBox txtPassword;
     private System.Windows.Forms.Button btnLogin;
+    private System.Windows.Forms.Button btnRegister;
     private System.Windows.Forms.Button btnCancel;
     private System.Windows.Forms.Label lblDescription;
+    private System.Windows.Forms.ComboBox cmbSavedAccounts;
+    private System.Windows.Forms.Button btnClearHistory;
   }
 }

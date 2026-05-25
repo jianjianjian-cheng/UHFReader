@@ -8,8 +8,8 @@ namespace UHFReader.DAL
   {
     public int AddTransaction(TransactionRecord record)
     {
-      string sql = @"INSERT INTO TransactionRecords (Type, MedicineId, TagId, Epc, OperatorId, OperatorName) 
-                          VALUES (@Type, @MedicineId, @TagId, @Epc, @OperatorId, @OperatorName)";
+      string sql = @"INSERT INTO TransactionRecords (Type, MedicineId, TagId, Epc, Quantity, OperatorId, OperatorName) 
+                          VALUES (@Type, @MedicineId, @TagId, @Epc, @Quantity, @OperatorId, @OperatorName)";
       return Execute(sql, record);
     }
 

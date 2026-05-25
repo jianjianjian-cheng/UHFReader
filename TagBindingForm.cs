@@ -49,6 +49,18 @@ namespace UHFReader
     private void LoadTags()
     {
       dgvTags.DataSource = _tagBll.GetAllTags();
+      SetColumnNames();
+    }
+
+    private void SetColumnNames()
+    {
+      if (dgvTags.Columns["Id"] != null) dgvTags.Columns["Id"].HeaderText = "编号";
+      if (dgvTags.Columns["Epc"] != null) dgvTags.Columns["Epc"].HeaderText = "电子标签号";
+      if (dgvTags.Columns["Tid"] != null) dgvTags.Columns["Tid"].HeaderText = "标签TID";
+      if (dgvTags.Columns["MedicineId"] != null) dgvTags.Columns["MedicineId"].HeaderText = "药品ID";
+      if (dgvTags.Columns["Status"] != null) dgvTags.Columns["Status"].HeaderText = "状态";
+      if (dgvTags.Columns["BindTime"] != null) dgvTags.Columns["BindTime"].HeaderText = "绑定时间";
+      if (dgvTags.Columns["CreateTime"] != null) dgvTags.Columns["CreateTime"].HeaderText = "创建时间";
     }
 
     private void btnScan_Click(object sender, EventArgs e)

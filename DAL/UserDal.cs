@@ -12,7 +12,8 @@ namespace UHFReader.DAL
 
         public int AddUser(User user)
         {
-            string sql = "INSERT INTO Users (Username, Password, Role) VALUES (@Username, @Password, @Role)";
+            string sql = "INSERT INTO Users (Username, Password, Role, CreateTime) VALUES (@Username, @Password, @Role, @CreateTime)";
+            user.CreateTime = System.DateTime.Now;
             return Execute(sql, user);
         }
     }

@@ -9,6 +9,7 @@ namespace UHFReader.Models
         public int MedicineId { get; set; }
         public int? TagId { get; set; }
         public string Epc { get; set; }
+        public int Quantity { get; set; }
         public int OperatorId { get; set; }
         public string OperatorName { get; set; }
         public DateTime CreateTime { get; set; }

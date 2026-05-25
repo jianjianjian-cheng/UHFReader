@@ -16,5 +16,15 @@ namespace UHFReader.BLL
             }
             return null;
         }
+
+        public User GetUserByUsername(string username)
+        {
+            return _userDal.GetUserByUsername(username);
+        }
+
+        public bool Register(User user)
+        {
+            return _userDal.AddUser(user) > 0;
+        }
     }
 }

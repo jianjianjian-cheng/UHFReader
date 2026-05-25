@@ -27,6 +27,18 @@ namespace UHFReader
     private void LoadMedicines()
     {
       dgvMedicines.DataSource = _medicineBll.GetAllMedicines();
+      SetColumnNames();
+    }
+
+    private void SetColumnNames()
+    {
+      if (dgvMedicines.Columns["Id"] != null) dgvMedicines.Columns["Id"].HeaderText = "编号";
+      if (dgvMedicines.Columns["Code"] != null) dgvMedicines.Columns["Code"].HeaderText = "药品编码";
+      if (dgvMedicines.Columns["Name"] != null) dgvMedicines.Columns["Name"].HeaderText = "药品名称";
+      if (dgvMedicines.Columns["Specification"] != null) dgvMedicines.Columns["Specification"].HeaderText = "规格";
+      if (dgvMedicines.Columns["Manufacturer"] != null) dgvMedicines.Columns["Manufacturer"].HeaderText = "生产厂家";
+      if (dgvMedicines.Columns["Description"] != null) dgvMedicines.Columns["Description"].HeaderText = "描述";
+      if (dgvMedicines.Columns["CreateTime"] != null) dgvMedicines.Columns["CreateTime"].HeaderText = "创建时间";
     }
 
     private void btnSearch_Click(object sender, EventArgs e)
@@ -39,6 +51,7 @@ namespace UHFReader
       else
       {
         dgvMedicines.DataSource = _medicineBll.SearchMedicines(keyword);
+        SetColumnNames();
       }
     }
 
@@ -344,8 +357,8 @@ namespace UHFReader
     }
 
     private void btnClose_Click(object sender, EventArgs e)
-        {
-          this.Hide();
-        }
+    {
+      this.Hide();
+    }
   }
 }

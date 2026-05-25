@@ -72,7 +72,7 @@ namespace UHFReader
       this.panelTop.Controls.Add(this.btnClose);
 
       this.panelLeft.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
-      this.panelLeft.Location = new System.Drawing.Point(15, 75);
+      this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
       this.panelLeft.Name = "panelLeft";
       this.panelLeft.Padding = new System.Windows.Forms.Padding(15);
       this.panelLeft.Size = new System.Drawing.Size(320, 600);
@@ -207,7 +207,7 @@ namespace UHFReader
       this.panelLeft.Controls.Add(this.btnRefresh);
 
       this.panelRight.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
-      this.panelRight.Location = new System.Drawing.Point(350, 75);
+      this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panelRight.Name = "panelRight";
       this.panelRight.Padding = new System.Windows.Forms.Padding(15);
       this.panelRight.Size = new System.Drawing.Size(835, 600);
@@ -237,6 +237,7 @@ namespace UHFReader
       };
       this.dgvTags.EnableHeadersVisualStyles = false;
       this.dgvTags.GridColor = System.Drawing.Color.FromArgb(90, 100, 130);
+      this.dgvTags.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgvTags.Location = new System.Drawing.Point(15, 15);
       this.dgvTags.Name = "dgvTags";
       this.dgvTags.ReadOnly = true;
