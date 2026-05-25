@@ -1,20 +1,57 @@
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using ReaderB;
 
 namespace UHFReader.Common
 {
   public static class RfidHelper
   {
-    public static bool IsConnected => Form1.IsConnected;
-    public static int PortHandle => Form1.SharedPortHandle;
+    public static bool IsConnected => GetComOpen();
+    public static int PortHandle => GetPortHandle();
+
+    private static bool GetComOpen()
+    {
+      foreach (Form form in Application.OpenForms)
+      {
+        if (form is Form1 rfidForm)
+        {
+          return rfidForm.ComOpenStatus;
+        }
+      }
+      return false;
+    }
+
+    private static int GetPortHandle()
+    {
+      foreach (Form form in Application.OpenForms)
+      {
+        if (form is Form1 rfidForm)
+        {
+          return rfidForm.PortHandleValue;
+        }
+      }
+      return -1;
+    }
+
+    private static byte GetComAdr()
+    {
+      foreach (Form form in Application.OpenForms)
+      {
+        if (form is Form1 rfidForm)
+        {
+          return rfidForm.ComAdrValue;
+        }
+      }
+      return 0xff;
+    }
 
     public static List<string> InventoryTags()
     {
       var tagList = new List<string>();
       if (!IsConnected || PortHandle < 0) return tagList;
 
-      byte comAdr = Form1.SharedComAdr;
+      byte comAdr = GetComAdr();
       byte AdrTID = 0;
       byte LenTID = 0;
       byte TIDFlag = 0;

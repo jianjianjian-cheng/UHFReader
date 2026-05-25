@@ -36,6 +36,10 @@ namespace UHFReader
     public static int SharedPortHandle => Instance?.PortHandle ?? -1;
     public static byte SharedComAdr => Instance?.fComAdr ?? 0xff;
 
+    public bool ComOpenStatus => ComOpen;
+    public int PortHandleValue => PortHandle;
+    public byte ComAdrValue => fComAdr;
+
     public Form1()
     {
       InitializeComponent();
