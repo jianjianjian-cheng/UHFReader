@@ -1,0 +1,63 @@
+-- 创建数据库
+CREATE DATABASE IF NOT EXISTS RfidMedicineDb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE RfidMedicineDb;
+
+-- 用户表
+CREATE TABLE IF NOT EXISTS Users (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL,
+    Role VARCHAR(20) NOT NULL,
+    CreateTime DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 药品信息表
+CREATE TABLE IF NOT EXISTS Medicines (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Code VARCHAR(50) NOT NULL UNIQUE,
+    Name VARCHAR(100) NOT NULL,
+    Specification VARCHAR(100),
+    Manufacturer VARCHAR(100),
+    Description TEXT,
+    CreateTime DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- RFID标签表
+CREATE TABLE IF NOT EXISTS RfidTags (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Epc VARCHAR(100) NOT NULL UNIQUE,
+    Tid VARCHAR(100),
+    MedicineId INT,
+    Status VARCHAR(20) NOT NULL DEFAULT 'Unbound',
+    BindTime DATETIME,
+    CreateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (MedicineId) REFERENCES Medicines(Id)
+);
+
+-- 库存表
+CREATE TABLE IF NOT EXISTS Inventory (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    MedicineId INT NOT NULL UNIQUE,
+    Quantity INT NOT NULL DEFAULT 0,
+    UpdateTime DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (MedicineId) REFERENCES Medicines(Id)
+);
+
+-- 出入库记录表
+CREATE TABLE IF NOT EXISTS TransactionRecords (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Type VARCHAR(20) NOT NULL,
+    MedicineId INT NOT NULL,
+    TagId INT,
+    Epc VARCHAR(100),
+    OperatorId INT NOT NULL,
+    OperatorName VARCHAR(50) NOT NULL,
+    CreateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (MedicineId) REFERENCES Medicines(Id),
+    FOREIGN KEY (TagId) REFERENCES RfidTags(Id)
+);
+
+-- 插入默认管理员用户
+INSERT INTO Users (Username, Password, Role) VALUES ('admin', 'admin123', 'Admin')
+ON DUPLICATE KEY UPDATE Username=Username;

@@ -1,0 +1,139 @@
+using System;
+using System.Linq;
+using System.Windows.Forms;
+using UHFReader.BLL;
+using UHFReader.Common;
+using UHFReader.Models;
+
+namespace UHFReader
+{
+  public partial class InOutForm : Form
+  {
+    private TransactionRecordBll _transactionBll = new TransactionRecordBll();
+    private RfidTagBll _tagBll = new RfidTagBll();
+    private MedicineBll _medicineBll = new MedicineBll();
+
+    public InOutForm()
+    {
+      InitializeComponent();
+    }
+
+    private void InOutForm_Load(object sender, EventArgs e)
+    {
+      LoadMedicines();
+      LoadRecords();
+    }
+
+    private void LoadMedicines()
+    {
+      var medicines = _medicineBll.GetAllMedicines();
+      cmbMedicine.DataSource = medicines;
+      cmbMedicine.DisplayMember = "Name";
+      cmbMedicine.ValueMember = "Id";
+    }
+
+    private void txtEpc_TextChanged(object sender, EventArgs e)
+    {
+      string epc = txtEpc.Text.Trim();
+      if (!string.IsNullOrEmpty(epc))
+      {
+        var tag = _tagBll.GetTagByEpc(epc);
+        if (tag != null && tag.MedicineId.HasValue)
+        {
+          var medicine = _medicineBll.GetMedicineById(tag.MedicineId.Value);
+          if (medicine != null)
+          {
+            cmbMedicine.SelectedValue = medicine.Id;
+            lblTagStatus.Text = $"标签状态: {GetStatusText(tag.Status)}";
+          }
+        }
+      }
+    }
+
+    private string GetStatusText(string status)
+    {
+      switch (status)
+      {
+        case "Unbound": return "未绑定";
+        case "Bound": return "已绑定";
+        case "InStock": return "已入库";
+        case "OutStock": return "已出库";
+        default: return status;
+      }
+    }
+
+    private void btnIn_Click(object sender, EventArgs e)
+    {
+      string epc = txtEpc.Text.Trim();
+      if (string.IsNullOrEmpty(epc))
+      {
+        MessageBox.Show("请输入或扫描EPC！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+      }
+
+      if (cmbMedicine.SelectedValue == null)
+      {
+        MessageBox.Show("请选择药品！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+      }
+
+      int medicineId = Convert.ToInt32(cmbMedicine.SelectedValue);
+
+      if (_transactionBll.StockIn(epc, medicineId, CurrentUser.User.Id, CurrentUser.User.Username))
+      {
+        MessageBox.Show("入库成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        txtEpc.Clear();
+        lblTagStatus.Text = "标签状态: -";
+      }
+      else
+      {
+        MessageBox.Show("入库失败！请检查标签状态是否正确。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void btnOut_Click(object sender, EventArgs e)
+    {
+      string epc = txtEpc.Text.Trim();
+      if (string.IsNullOrEmpty(epc))
+      {
+        MessageBox.Show("请输入或扫描EPC！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+      }
+
+      if (cmbMedicine.SelectedValue == null)
+      {
+        MessageBox.Show("请选择药品！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+      }
+
+      int medicineId = Convert.ToInt32(cmbMedicine.SelectedValue);
+
+      if (_transactionBll.StockOut(epc, medicineId, CurrentUser.User.Id, CurrentUser.User.Username))
+      {
+        MessageBox.Show("出库成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        txtEpc.Clear();
+        lblTagStatus.Text = "标签状态: -";
+        LoadRecords();
+      }
+      else
+      {
+        MessageBox.Show("出库失败！请检查标签状态是否正确。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void LoadRecords()
+    {
+      dgvRecords.DataSource = _transactionBll.GetAllTransactions();
+    }
+
+    private void btnRefresh_Click(object sender, EventArgs e)
+    {
+      LoadRecords();
+    }
+
+    private void btnClose_Click(object sender, EventArgs e)
+    {
+      this.Hide();
+    }
+  }
+}

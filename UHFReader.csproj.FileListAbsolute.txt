@@ -1,0 +1,61 @@
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\bin\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\bin\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\obj\x86\Debug\UHFReader.Form1.resources
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\obj\x86\Debug\UHFReader.Properties.Resources.resources
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\obj\x86\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\GetReaderInfo\UHFReader\obj\x86\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\obj\x86\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\obj\x86\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\bin\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\bin\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\obj\x86\Debug\UHFReader.Form1.resources
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\obj\x86\Debug\UHFReader.Properties.Resources.resources
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\ywa\Desktop\RFID实验\SetParameter\UHFReader\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\obj\x86\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\obj\x86\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\bin\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\bin\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\obj\x86\Debug\UHFReader.Form1.resources
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\obj\x86\Debug\UHFReader.Properties.Resources.resources
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\ywa\Desktop\RFID实验\TagEnquery\UHFReader\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\bin\Debug\UHFReader.exe
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\bin\Debug\UHFReader.pdb
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Form1.resources
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Properties.Resources.resources
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\ywa\Desktop\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.exe
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.pdb
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\bin\Debug\UHFReader.exe
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\bin\Debug\UHFReader.pdb
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Form1.resources
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Properties.Resources.resources
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\备份\教学\2015级5，6班RFID\RFID实验\TagReadAndWrite\UHFReader\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.exe
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.pdb
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\bin\Debug\UHFReader.exe
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\bin\Debug\UHFReader.pdb
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.csprojResolveAssemblyReference.cache
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Form1.resources
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Properties.Resources.resources
+E:\备份\教学\2023 RFID与物联网应用\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.csproj.GenerateResource.Cache
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.exe
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.pdb
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\bin\Debug\UHFReader.exe
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\bin\Debug\UHFReader.pdb
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.csprojResolveAssemblyReference.cache
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Form1.resources
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.Properties.Resources.resources
+E:\备份\教学\2024 RFID与物联网应用 21级1,2班\ppt\实验\第5次 TagReadAndWrite\UHFReader\obj\x86\Debug\UHFReader.csproj.GenerateResource.Cache
