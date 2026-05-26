@@ -71,7 +71,7 @@ namespace UHFReader
             this.btnMinimizeRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizeRestore.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnMinimizeRestore.ForeColor = System.Drawing.Color.White;
-            this.btnMinimizeRestore.Location = new System.Drawing.Point(1640, 15);
+            this.btnMinimizeRestore.Location = new System.Drawing.Point(1600, 15);
             this.btnMinimizeRestore.Name = "btnMinimizeRestore";
             this.btnMinimizeRestore.Size = new System.Drawing.Size(100, 40);
             this.btnMinimizeRestore.TabIndex = 9;
@@ -83,7 +83,7 @@ namespace UHFReader
             // --- 欢迎标签 ---
             this.lblWelcome.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F);
             this.lblWelcome.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
-            this.lblWelcome.Location = new System.Drawing.Point(1500, 20);
+            this.lblWelcome.Location = new System.Drawing.Point(1450, 20);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(130, 30);
             this.lblWelcome.TabIndex = 1;

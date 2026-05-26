@@ -33,8 +33,6 @@ namespace UHFReader
       this.btnUpdate = new System.Windows.Forms.Button();
       this.btnDelete = new System.Windows.Forms.Button();
       this.btnClear = new System.Windows.Forms.Button();
-      this.btnImportExcel = new System.Windows.Forms.Button();
-      this.btnExportTemplate = new System.Windows.Forms.Button();
       this.panelRight = new System.Windows.Forms.Panel();
       this.tableLayoutPanelRight = new System.Windows.Forms.TableLayoutPanel();
       this.panelSearch = new System.Windows.Forms.Panel();
@@ -266,37 +264,6 @@ namespace UHFReader
       this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 
-      // --- 导入Excel按钮 ---
-      this.btnImportExcel.BackColor = System.Drawing.Color.FromArgb(59, 130, 246);
-      this.btnImportExcel.FlatAppearance.BorderSize = 0;
-      this.btnImportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnImportExcel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
-      this.btnImportExcel.ForeColor = System.Drawing.Color.White;
-      this.btnImportExcel.Location = new System.Drawing.Point(15, btnY + (btnHeight + 10) * 2);
-      this.btnImportExcel.Name = "btnImportExcel";
-      this.btnImportExcel.Size = new System.Drawing.Size(btnWidth, 35);
-      this.btnImportExcel.TabIndex = 19;
-      this.btnImportExcel.Text = "Excel批量导入";
-      this.btnImportExcel.UseVisualStyleBackColor = false;
-      this.btnImportExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
-
-      // --- 导出模板按钮 ---
-      this.btnExportTemplate.BackColor = System.Drawing.Color.White;
-      this.btnExportTemplate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(226, 232, 240);
-      this.btnExportTemplate.FlatAppearance.BorderSize = 1;
-      this.btnExportTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnExportTemplate.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-      this.btnExportTemplate.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
-      this.btnExportTemplate.Location = new System.Drawing.Point(15 + btnWidth + btnSpacing, btnY + (btnHeight + 10) * 2);
-      this.btnExportTemplate.Name = "btnExportTemplate";
-      this.btnExportTemplate.Size = new System.Drawing.Size(btnWidth, 35);
-      this.btnExportTemplate.TabIndex = 20;
-      this.btnExportTemplate.Text = "导出模板";
-      this.btnExportTemplate.UseVisualStyleBackColor = false;
-      this.btnExportTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.btnExportTemplate.Click += new System.EventHandler(this.btnExportTemplate_Click);
-
       // --- 左侧面板控件添加 ---
       this.panelLeft.Controls.Add(this.lblCode);
       this.panelLeft.Controls.Add(this.txtCode);
@@ -312,8 +279,6 @@ namespace UHFReader
       this.panelLeft.Controls.Add(this.btnUpdate);
       this.panelLeft.Controls.Add(this.btnDelete);
       this.panelLeft.Controls.Add(this.btnClear);
-      this.panelLeft.Controls.Add(this.btnImportExcel);
-      this.panelLeft.Controls.Add(this.btnExportTemplate);
 
       // --- 右侧面板 ---
       this.panelRight.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
@@ -468,8 +433,6 @@ namespace UHFReader
     private System.Windows.Forms.Button btnUpdate;
     private System.Windows.Forms.Button btnDelete;
     private System.Windows.Forms.Button btnClear;
-    private System.Windows.Forms.Button btnImportExcel;
-    private System.Windows.Forms.Button btnExportTemplate;
     private System.Windows.Forms.Label lblSearch;
     private System.Windows.Forms.TextBox txtSearch;
     private System.Windows.Forms.Button btnSearch;

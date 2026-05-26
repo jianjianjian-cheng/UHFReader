@@ -51,7 +51,6 @@ CREATE TABLE IF NOT EXISTS TransactionRecords (
     MedicineId INT NOT NULL,
     TagId INT,
     Epc VARCHAR(100),
-    Quantity INT NOT NULL DEFAULT 0,
     OperatorId INT NOT NULL,
     OperatorName VARCHAR(50) NOT NULL,
     CreateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
