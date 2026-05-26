@@ -39,22 +39,25 @@ namespace UHFReader
       ((System.ComponentModel.ISupportInitialize)(this.dgvTags)).BeginInit();
       this.SuspendLayout();
 
-      this.panelTop.BackColor = System.Drawing.Color.FromArgb(45, 55, 75);
+      // --- 顶部面板 ---
+      this.panelTop.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
       this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
       this.panelTop.Location = new System.Drawing.Point(0, 0);
       this.panelTop.Name = "panelTop";
       this.panelTop.Size = new System.Drawing.Size(1200, 60);
       this.panelTop.TabIndex = 0;
 
+      // --- 标题 ---
       this.lblTitle.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F, System.Drawing.FontStyle.Bold);
-      this.lblTitle.ForeColor = System.Drawing.Color.White;
+      this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
       this.lblTitle.Location = new System.Drawing.Point(20, 12);
       this.lblTitle.Name = "lblTitle";
       this.lblTitle.Size = new System.Drawing.Size(150, 36);
       this.lblTitle.TabIndex = 0;
       this.lblTitle.Text = "🏷️ 标签绑定";
 
-      this.btnClose.BackColor = System.Drawing.Color.FromArgb(230, 80, 80);
+      // --- 关闭按钮 ---
+      this.btnClose.BackColor = System.Drawing.Color.FromArgb(248, 113, 113);
       this.btnClose.FlatAppearance.BorderSize = 0;
       this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnClose.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
@@ -68,10 +71,12 @@ namespace UHFReader
       this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 
+      // --- 顶部面板控件添加 ---
       this.panelTop.Controls.Add(this.lblTitle);
       this.panelTop.Controls.Add(this.btnClose);
 
-      this.panelLeft.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
+      // --- 左侧面板 ---
+      this.panelLeft.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
       this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
       this.panelLeft.Name = "panelLeft";
       this.panelLeft.Padding = new System.Windows.Forms.Padding(15);
@@ -82,57 +87,61 @@ namespace UHFReader
       int inputY = 45;
       int spacing = 45;
 
+      // --- EPC标签 ---
       this.lblEpc.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-      this.lblEpc.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+      this.lblEpc.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
       this.lblEpc.Location = new System.Drawing.Point(15, labelY);
       this.lblEpc.Name = "lblEpc";
       this.lblEpc.Size = new System.Drawing.Size(80, 20);
       this.lblEpc.TabIndex = 1;
       this.lblEpc.Text = "EPC:";
 
-      this.txtEpc.BackColor = System.Drawing.Color.FromArgb(70, 80, 110);
-      this.txtEpc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      // --- EPC输入框 ---
+      this.txtEpc.BackColor = System.Drawing.Color.White;
+      this.txtEpc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.txtEpc.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-      this.txtEpc.ForeColor = System.Drawing.Color.White;
+      this.txtEpc.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
       this.txtEpc.Location = new System.Drawing.Point(15, inputY);
       this.txtEpc.Name = "txtEpc";
       this.txtEpc.Size = new System.Drawing.Size(290, 25);
       this.txtEpc.TabIndex = 4;
 
+      // --- TID ---
       labelY += spacing + 15;
       inputY += spacing + 15;
       this.lblTid.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-      this.lblTid.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+      this.lblTid.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
       this.lblTid.Location = new System.Drawing.Point(15, labelY);
       this.lblTid.Name = "lblTid";
       this.lblTid.Size = new System.Drawing.Size(80, 20);
       this.lblTid.TabIndex = 2;
       this.lblTid.Text = "TID:";
 
-      this.txtTid.BackColor = System.Drawing.Color.FromArgb(70, 80, 110);
-      this.txtTid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.txtTid.BackColor = System.Drawing.Color.White;
+      this.txtTid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.txtTid.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-      this.txtTid.ForeColor = System.Drawing.Color.White;
+      this.txtTid.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
       this.txtTid.Location = new System.Drawing.Point(15, inputY);
       this.txtTid.Name = "txtTid";
       this.txtTid.Size = new System.Drawing.Size(290, 25);
       this.txtTid.TabIndex = 5;
 
+      // --- 药品选择 ---
       labelY += spacing + 15;
       inputY += spacing + 15;
       this.lblMedicine.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-      this.lblMedicine.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+      this.lblMedicine.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
       this.lblMedicine.Location = new System.Drawing.Point(15, labelY);
       this.lblMedicine.Name = "lblMedicine";
       this.lblMedicine.Size = new System.Drawing.Size(80, 20);
       this.lblMedicine.TabIndex = 3;
       this.lblMedicine.Text = "药品:";
 
-      this.cmbMedicine.BackColor = System.Drawing.Color.FromArgb(70, 80, 110);
+      this.cmbMedicine.BackColor = System.Drawing.Color.White;
       this.cmbMedicine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cmbMedicine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.cmbMedicine.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-      this.cmbMedicine.ForeColor = System.Drawing.Color.White;
+      this.cmbMedicine.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
       this.cmbMedicine.Location = new System.Drawing.Point(15, inputY);
       this.cmbMedicine.Name = "cmbMedicine";
       this.cmbMedicine.Size = new System.Drawing.Size(290, 30);
@@ -143,7 +152,8 @@ namespace UHFReader
       int btnHeight = 40;
       int btnSpacing = 15;
 
-      this.btnScan.BackColor = System.Drawing.Color.FromArgb(70, 180, 100);
+      // --- 扫描按钮 ---
+      this.btnScan.BackColor = System.Drawing.Color.FromArgb(16, 185, 129);
       this.btnScan.FlatAppearance.BorderSize = 0;
       this.btnScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnScan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
@@ -157,7 +167,8 @@ namespace UHFReader
       this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
 
-      this.btnBind.BackColor = System.Drawing.Color.FromArgb(70, 130, 200);
+      // --- 绑定按钮 ---
+      this.btnBind.BackColor = System.Drawing.Color.FromArgb(59, 130, 246);
       this.btnBind.FlatAppearance.BorderSize = 0;
       this.btnBind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnBind.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
@@ -171,21 +182,24 @@ namespace UHFReader
       this.btnBind.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnBind.Click += new System.EventHandler(this.btnBind_Click);
 
+      // --- 扫描状态 ---
       btnY += btnHeight + 10;
       this.lblScanStatus.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-      this.lblScanStatus.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+      this.lblScanStatus.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
       this.lblScanStatus.Location = new System.Drawing.Point(15, btnY);
       this.lblScanStatus.Name = "lblScanStatus";
       this.lblScanStatus.Size = new System.Drawing.Size(290, 25);
       this.lblScanStatus.TabIndex = 10;
       this.lblScanStatus.Text = "状态: 未扫描";
 
+      // --- 刷新按钮 ---
       btnY += 35;
-      this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(90, 100, 130);
-      this.btnRefresh.FlatAppearance.BorderSize = 0;
+      this.btnRefresh.BackColor = System.Drawing.Color.White;
+      this.btnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(226, 232, 240);
+      this.btnRefresh.FlatAppearance.BorderSize = 1;
       this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-      this.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+      this.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
       this.btnRefresh.Location = new System.Drawing.Point(15, btnY);
       this.btnRefresh.Name = "btnRefresh";
       this.btnRefresh.Size = new System.Drawing.Size(290, 40);
@@ -195,6 +209,7 @@ namespace UHFReader
       this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 
+      // --- 左侧面板控件添加 ---
       this.panelLeft.Controls.Add(this.lblEpc);
       this.panelLeft.Controls.Add(this.txtEpc);
       this.panelLeft.Controls.Add(this.lblTid);
@@ -206,37 +221,39 @@ namespace UHFReader
       this.panelLeft.Controls.Add(this.lblScanStatus);
       this.panelLeft.Controls.Add(this.btnRefresh);
 
-      this.panelRight.BackColor = System.Drawing.Color.FromArgb(55, 65, 90);
+      // --- 右侧面板 ---
+      this.panelRight.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
       this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panelRight.Name = "panelRight";
       this.panelRight.Padding = new System.Windows.Forms.Padding(15);
       this.panelRight.Size = new System.Drawing.Size(835, 600);
       this.panelRight.TabIndex = 2;
 
+      // --- 标签表格 ---
       this.dgvTags.AllowUserToAddRows = false;
       this.dgvTags.AllowUserToDeleteRows = false;
       this.dgvTags.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-      this.dgvTags.BackgroundColor = System.Drawing.Color.FromArgb(55, 65, 90);
+      this.dgvTags.BackgroundColor = System.Drawing.Color.White;
       this.dgvTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.dgvTags.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
       this.dgvTags.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
       this.dgvTags.ColumnHeadersDefaultCellStyle = new System.Windows.Forms.DataGridViewCellStyle
       {
-        BackColor = System.Drawing.Color.FromArgb(45, 55, 75),
+        BackColor = System.Drawing.Color.FromArgb(59, 130, 246),
         ForeColor = System.Drawing.Color.White,
         Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold),
         Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
       };
       this.dgvTags.DefaultCellStyle = new System.Windows.Forms.DataGridViewCellStyle
       {
-        BackColor = System.Drawing.Color.FromArgb(55, 65, 90),
-        ForeColor = System.Drawing.Color.FromArgb(180, 190, 210),
+        BackColor = System.Drawing.Color.White,
+        ForeColor = System.Drawing.Color.FromArgb(51, 65, 85),
         Font = new System.Drawing.Font("Microsoft YaHei UI", 9F),
-        SelectionBackColor = System.Drawing.Color.FromArgb(70, 130, 200),
-        SelectionForeColor = System.Drawing.Color.White
+        SelectionBackColor = System.Drawing.Color.FromArgb(219, 234, 254),
+        SelectionForeColor = System.Drawing.Color.FromArgb(30, 41, 59)
       };
       this.dgvTags.EnableHeadersVisualStyles = false;
-      this.dgvTags.GridColor = System.Drawing.Color.FromArgb(90, 100, 130);
+      this.dgvTags.GridColor = System.Drawing.Color.FromArgb(226, 232, 240);
       this.dgvTags.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgvTags.Location = new System.Drawing.Point(15, 15);
       this.dgvTags.Name = "dgvTags";
@@ -248,12 +265,14 @@ namespace UHFReader
       this.dgvTags.TabIndex = 9;
       this.dgvTags.ColumnHeadersHeight = 40;
 
+      // --- 右侧面板控件添加 ---
       this.panelRight.Controls.Add(this.dgvTags);
 
       this.scanTimer.Enabled = false;
       this.scanTimer.Interval = 500;
       this.scanTimer.Tick += new System.EventHandler(this.scanTimer_Tick);
 
+      // --- 窗体设置 ---
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1200, 700);
