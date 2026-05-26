@@ -29,14 +29,19 @@ namespace UHFReader
       this.btnBind = new System.Windows.Forms.Button();
       this.btnRefresh = new System.Windows.Forms.Button();
       this.btnScan = new System.Windows.Forms.Button();
+      this.btnOpenPort = new System.Windows.Forms.Button();
       this.lblScanStatus = new System.Windows.Forms.Label();
+      this.lblPortStatus = new System.Windows.Forms.Label();
+      this.lblScanList = new System.Windows.Forms.Label();
       this.panelRight = new System.Windows.Forms.Panel();
       this.dgvTags = new System.Windows.Forms.DataGridView();
+      this.dgvScanTags = new System.Windows.Forms.DataGridView();
       this.scanTimer = new System.Windows.Forms.Timer(this.components);
       this.panelTop.SuspendLayout();
       this.panelLeft.SuspendLayout();
       this.panelRight.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvTags)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgvScanTags)).BeginInit();
       this.SuspendLayout();
 
       // --- 顶部面板 ---
@@ -202,12 +207,83 @@ namespace UHFReader
       this.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
       this.btnRefresh.Location = new System.Drawing.Point(15, btnY);
       this.btnRefresh.Name = "btnRefresh";
-      this.btnRefresh.Size = new System.Drawing.Size(290, 40);
+      this.btnRefresh.Size = new System.Drawing.Size(135, 40);
       this.btnRefresh.TabIndex = 8;
       this.btnRefresh.Text = "刷新列表";
       this.btnRefresh.UseVisualStyleBackColor = false;
       this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
       this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+
+      // --- 打开端口按钮 ---
+      this.btnOpenPort.BackColor = System.Drawing.Color.FromArgb(16, 185, 129);
+      this.btnOpenPort.FlatAppearance.BorderSize = 0;
+      this.btnOpenPort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnOpenPort.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
+      this.btnOpenPort.ForeColor = System.Drawing.Color.White;
+      this.btnOpenPort.Location = new System.Drawing.Point(15 + 135 + 20, btnY);
+      this.btnOpenPort.Name = "btnOpenPort";
+      this.btnOpenPort.Size = new System.Drawing.Size(135, 40);
+      this.btnOpenPort.TabIndex = 11;
+      this.btnOpenPort.Text = "🔌 打开端口";
+      this.btnOpenPort.UseVisualStyleBackColor = false;
+      this.btnOpenPort.Cursor = System.Windows.Forms.Cursors.Hand;
+      this.btnOpenPort.Click += new System.EventHandler(this.btnOpenPort_Click);
+
+      // --- 端口状态标签 ---
+      btnY += btnHeight + 15;
+      this.lblPortStatus.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+      this.lblPortStatus.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
+      this.lblPortStatus.Location = new System.Drawing.Point(15, btnY);
+      this.lblPortStatus.Name = "lblPortStatus";
+      this.lblPortStatus.Size = new System.Drawing.Size(290, 25);
+      this.lblPortStatus.TabIndex = 12;
+      this.lblPortStatus.Text = "端口状态: 未连接";
+
+      // --- 扫描标签列表标题 ---
+      btnY += 30;
+      this.lblScanList.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
+      this.lblScanList.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
+      this.lblScanList.Location = new System.Drawing.Point(15, btnY);
+      this.lblScanList.Name = "lblScanList";
+      this.lblScanList.Size = new System.Drawing.Size(290, 25);
+      this.lblScanList.TabIndex = 13;
+      this.lblScanList.Text = "📡 扫描到的标签";
+
+      // --- 扫描标签列表 ---
+      btnY += 25;
+      this.dgvScanTags.AllowUserToAddRows = false;
+      this.dgvScanTags.AllowUserToDeleteRows = false;
+      this.dgvScanTags.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+      this.dgvScanTags.BackgroundColor = System.Drawing.Color.White;
+      this.dgvScanTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.dgvScanTags.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+      this.dgvScanTags.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+      this.dgvScanTags.ColumnHeadersDefaultCellStyle = new System.Windows.Forms.DataGridViewCellStyle
+      {
+        BackColor = System.Drawing.Color.FromArgb(16, 185, 129),
+        ForeColor = System.Drawing.Color.White,
+        Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Bold),
+        Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      };
+      this.dgvScanTags.DefaultCellStyle = new System.Windows.Forms.DataGridViewCellStyle
+      {
+        BackColor = System.Drawing.Color.White,
+        ForeColor = System.Drawing.Color.FromArgb(51, 65, 85),
+        Font = new System.Drawing.Font("Microsoft YaHei UI", 8F),
+        SelectionBackColor = System.Drawing.Color.FromArgb(200, 240, 215),
+        SelectionForeColor = System.Drawing.Color.FromArgb(30, 41, 59)
+      };
+      this.dgvScanTags.EnableHeadersVisualStyles = false;
+      this.dgvScanTags.GridColor = System.Drawing.Color.FromArgb(226, 232, 240);
+      this.dgvScanTags.Location = new System.Drawing.Point(15, btnY);
+      this.dgvScanTags.Name = "dgvScanTags";
+      this.dgvScanTags.ReadOnly = true;
+      this.dgvScanTags.RowHeadersVisible = false;
+      this.dgvScanTags.RowTemplate.Height = 28;
+      this.dgvScanTags.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.dgvScanTags.Size = new System.Drawing.Size(290, 180);
+      this.dgvScanTags.TabIndex = 14;
+      this.dgvScanTags.ColumnHeadersHeight = 30;
 
       // --- 左侧面板控件添加 ---
       this.panelLeft.Controls.Add(this.lblEpc);
@@ -220,6 +296,10 @@ namespace UHFReader
       this.panelLeft.Controls.Add(this.btnBind);
       this.panelLeft.Controls.Add(this.lblScanStatus);
       this.panelLeft.Controls.Add(this.btnRefresh);
+      this.panelLeft.Controls.Add(this.btnOpenPort);
+      this.panelLeft.Controls.Add(this.lblPortStatus);
+      this.panelLeft.Controls.Add(this.lblScanList);
+      this.panelLeft.Controls.Add(this.dgvScanTags);
 
       // --- 右侧面板 ---
       this.panelRight.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
@@ -290,6 +370,7 @@ namespace UHFReader
       this.panelLeft.ResumeLayout(false);
       this.panelRight.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgvTags)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgvScanTags)).EndInit();
       this.ResumeLayout(false);
     }
 
@@ -307,8 +388,12 @@ namespace UHFReader
     private System.Windows.Forms.Button btnBind;
     private System.Windows.Forms.Button btnRefresh;
     private System.Windows.Forms.Button btnScan;
+    private System.Windows.Forms.Button btnOpenPort;
     private System.Windows.Forms.Label lblScanStatus;
+    private System.Windows.Forms.Label lblPortStatus;
+    private System.Windows.Forms.Label lblScanList;
     private System.Windows.Forms.DataGridView dgvTags;
+    private System.Windows.Forms.DataGridView dgvScanTags;
     private System.Windows.Forms.Timer scanTimer;
   }
 }

@@ -40,6 +40,14 @@ namespace UHFReader
     public int PortHandleValue => PortHandle;
     public byte ComAdrValue => fComAdr;
 
+    public void SetPortStatus(bool isOpen, int portHandle, byte comAdr)
+    {
+      ComOpen = isOpen;
+      PortHandle = portHandle;
+      fComAdr = comAdr;
+      fOpenComIndex = portHandle;
+    }
+
     public Form1()
     {
       InitializeComponent();

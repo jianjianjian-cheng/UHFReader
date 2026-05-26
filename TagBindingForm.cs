@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using ReaderB;
 using UHFReader.BLL;
 using UHFReader.Models;
 using UHFReader.Common;
@@ -13,6 +14,8 @@ namespace UHFReader
     private MedicineBll _medicineBll = new MedicineBll();
     private bool _isScanning = false;
     private string _lastEpc = "";
+    private System.Data.DataTable _scanTagsTable = new System.Data.DataTable();
+    private System.Collections.Generic.Dictionary<string, DateTime> _scannedTags = new System.Collections.Generic.Dictionary<string, DateTime>();
 
     public TagBindingForm()
     {
@@ -21,8 +24,19 @@ namespace UHFReader
 
     private void TagBindingForm_Load(object sender, EventArgs e)
     {
+      InitializeScanTable();
       LoadMedicines();
       LoadTags();
+    }
+
+    private void InitializeScanTable()
+    {
+      if (_scanTagsTable.Columns.Count == 0)
+      {
+        _scanTagsTable.Columns.Add("EPC", typeof(string));
+        _scanTagsTable.Columns.Add("扫描时间", typeof(DateTime));
+      }
+      dgvScanTags.DataSource = _scanTagsTable;
     }
 
     private void TagBindingForm_VisibleChanged(object sender, EventArgs e)
@@ -115,6 +129,8 @@ namespace UHFReader
           lblScanStatus.Text = $"检测到标签: {epc}";
           lblScanStatus.ForeColor = System.Drawing.Color.LightGreen;
 
+          AddScannedTag(epc);
+
           var tag = _tagBll.GetTagByEpc(epc);
           if (tag != null && tag.MedicineId.HasValue)
           {
@@ -134,6 +150,42 @@ namespace UHFReader
         lblScanStatus.Text = "扫描出错";
         lblScanStatus.ForeColor = System.Drawing.Color.LightSalmon;
       }
+    }
+
+    private void AddScannedTag(string epc)
+    {
+      try
+      {
+        if (_scannedTags.ContainsKey(epc))
+        {
+          _scannedTags[epc] = DateTime.Now;
+          foreach (System.Data.DataRow row in _scanTagsTable.Rows)
+          {
+            if (row["EPC"].ToString() == epc)
+            {
+              row["扫描时间"] = DateTime.Now;
+              break;
+            }
+          }
+        }
+        else
+        {
+          _scannedTags.Add(epc, DateTime.Now);
+          _scanTagsTable.Rows.Add(epc, DateTime.Now);
+
+          if (_scanTagsTable.Rows.Count > 10)
+          {
+            _scanTagsTable.Rows.RemoveAt(0);
+            _scannedTags.Remove(_scannedTags.Keys.First());
+          }
+        }
+
+        if (dgvScanTags.Columns["扫描时间"] != null)
+        {
+          dgvScanTags.Sort(dgvScanTags.Columns["扫描时间"], System.ComponentModel.ListSortDirection.Descending);
+        }
+      }
+      catch { }
     }
 
     private void btnBind_Click(object sender, EventArgs e)
@@ -175,6 +227,59 @@ namespace UHFReader
       txtEpc.Clear();
       txtTid.Clear();
       _lastEpc = "";
+    }
+
+    private void btnOpenPort_Click(object sender, EventArgs e)
+    {
+      btnOpenPort.Enabled = false;
+
+      try
+      {
+        if (Form1.Instance != null && Form1.IsConnected)
+        {
+          MessageBox.Show("端口已打开！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          lblPortStatus.Text = "端口状态: 已连接";
+          lblPortStatus.ForeColor = System.Drawing.Color.LightGreen;
+          btnOpenPort.Enabled = true;
+          return;
+        }
+
+        int port = 0;
+        int openResult = 30;
+        byte comAdr = 0xff;
+        byte baud = 5;
+        int portHandle = 0;
+
+        openResult = StaticClassReaderB.AutoOpenComPort(ref port, ref comAdr, baud, ref portHandle);
+
+        if (openResult == 0)
+        {
+          MessageBox.Show("端口打开成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          lblPortStatus.Text = $"端口状态: 已连接 (COM{port})";
+          lblPortStatus.ForeColor = System.Drawing.Color.LightGreen;
+
+          if (Form1.Instance != null)
+          {
+            Form1.Instance.SetPortStatus(true, portHandle, comAdr);
+          }
+        }
+        else
+        {
+          MessageBox.Show("端口打开失败，请检查设备连接！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          lblPortStatus.Text = "端口状态: 未连接";
+          lblPortStatus.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("打开端口时发生错误: " + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        lblPortStatus.Text = "端口状态: 连接错误";
+        lblPortStatus.ForeColor = System.Drawing.Color.LightSalmon;
+      }
+      finally
+      {
+        btnOpenPort.Enabled = true;
+      }
     }
 
     private void btnClose_Click(object sender, EventArgs e)
