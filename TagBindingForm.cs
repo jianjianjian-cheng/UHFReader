@@ -93,8 +93,30 @@ namespace UHFReader
     {
       if (!RfidHelper.IsConnected)
       {
-        MessageBox.Show("请先在RFID读写器界面打开端口！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        return;
+        int port = 0;
+        byte comAdr = 0xff;
+        byte baud = 5;
+        int portHandle = 0;
+
+        int openResult = StaticClassReaderB.AutoOpenComPort(ref port, ref comAdr, baud, ref portHandle);
+
+        if (openResult == 0)
+        {
+          if (Form1.Instance != null)
+          {
+            Form1.Instance.SetPortStatus(true, portHandle, comAdr);
+          }
+          lblPortStatus.Text = $"端口状态: 已连接 (COM{port})";
+          lblPortStatus.ForeColor = System.Drawing.Color.LightGreen;
+          MessageBox.Show("端口已自动打开！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        else
+        {
+          MessageBox.Show("请先连接RFID读写器！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          lblPortStatus.Text = "端口状态: 未连接";
+          lblPortStatus.ForeColor = System.Drawing.Color.FromArgb(180, 190, 210);
+          return;
+        }
       }
 
       _isScanning = true;

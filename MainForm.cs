@@ -118,5 +118,20 @@ namespace UHFReader
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                var result = MessageBox.Show("确定要退出系统吗？", "退出确认",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }
