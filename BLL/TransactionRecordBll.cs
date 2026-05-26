@@ -13,11 +13,6 @@ namespace UHFReader.BLL
 
     public bool StockIn(string epc, int medicineId, int operatorId, string operatorName)
     {
-      return StockIn(epc, medicineId, 1, operatorId, operatorName);
-    }
-
-    public bool StockIn(string epc, int medicineId, int quantity, int operatorId, string operatorName)
-    {
       var tag = _tagBll.GetTagByEpc(epc);
       if (tag == null || tag.MedicineId != medicineId)
       {
@@ -29,7 +24,7 @@ namespace UHFReader.BLL
         return false;
       }
 
-      _inventoryBll.AddInventory(medicineId, quantity);
+      _inventoryBll.AddInventory(medicineId, 1);
       _tagBll.UpdateTagStatus(epc, "InStock");
 
       var record = new TransactionRecord
@@ -38,7 +33,7 @@ namespace UHFReader.BLL
         MedicineId = medicineId,
         TagId = tag.Id,
         Epc = epc,
-        Quantity = quantity,
+        Quantity = 1,
         OperatorId = operatorId,
         OperatorName = operatorName
       };
@@ -46,11 +41,6 @@ namespace UHFReader.BLL
     }
 
     public bool StockOut(string epc, int medicineId, int operatorId, string operatorName)
-    {
-      return StockOut(epc, medicineId, 1, operatorId, operatorName);
-    }
-
-    public bool StockOut(string epc, int medicineId, int quantity, int operatorId, string operatorName)
     {
       var tag = _tagBll.GetTagByEpc(epc);
       if (tag == null || tag.MedicineId != medicineId)
@@ -63,7 +53,7 @@ namespace UHFReader.BLL
         return false;
       }
 
-      _inventoryBll.ReduceInventory(medicineId, quantity);
+      _inventoryBll.ReduceInventory(medicineId, 1);
       _tagBll.UpdateTagStatus(epc, "OutStock");
 
       var record = new TransactionRecord
@@ -72,7 +62,7 @@ namespace UHFReader.BLL
         MedicineId = medicineId,
         TagId = tag.Id,
         Epc = epc,
-        Quantity = quantity,
+        Quantity = 1,
         OperatorId = operatorId,
         OperatorName = operatorName
       };

@@ -24,8 +24,6 @@ namespace UHFReader
       this.lblMedicine = new System.Windows.Forms.Label();
       this.cmbMedicine = new System.Windows.Forms.ComboBox();
       this.lblTagStatus = new System.Windows.Forms.Label();
-      this.lblQuantity = new System.Windows.Forms.Label();
-      this.numQuantity = new System.Windows.Forms.NumericUpDown();
       this.btnIn = new System.Windows.Forms.Button();
       this.btnOut = new System.Windows.Forms.Button();
       this.btnScan = new System.Windows.Forms.Button();
@@ -128,28 +126,6 @@ namespace UHFReader
       this.cmbMedicine.Size = new System.Drawing.Size(220, 28);
       this.cmbMedicine.TabIndex = 3;
 
-      // --- 数量输入 ---
-      labelY += spacing;
-      inputY += spacing;
-      this.lblQuantity.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F);
-      this.lblQuantity.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
-      this.lblQuantity.Location = new System.Drawing.Point(20, labelY);
-      this.lblQuantity.Name = "lblQuantity";
-      this.lblQuantity.Size = new System.Drawing.Size(80, 25);
-      this.lblQuantity.TabIndex = 4;
-      this.lblQuantity.Text = "数量:";
-
-      this.numQuantity.BackColor = System.Drawing.Color.White;
-      this.numQuantity.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F);
-      this.numQuantity.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
-      this.numQuantity.Location = new System.Drawing.Point(120, inputY);
-      this.numQuantity.Name = "numQuantity";
-      this.numQuantity.Size = new System.Drawing.Size(220, 28);
-      this.numQuantity.TabIndex = 5;
-      this.numQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
-      this.numQuantity.Minimum = 1;
-      this.numQuantity.Maximum = 9999;
-
       // --- 标签状态 ---
       labelY += spacing;
       inputY += spacing;
@@ -158,10 +134,10 @@ namespace UHFReader
       this.lblTagStatus.Location = new System.Drawing.Point(20, labelY);
       this.lblTagStatus.Name = "lblTagStatus";
       this.lblTagStatus.Size = new System.Drawing.Size(320, 25);
-      this.lblTagStatus.TabIndex = 6;
+      this.lblTagStatus.TabIndex = 4;
       this.lblTagStatus.Text = "标签状态: 未扫描";
 
-      int btnY = 250;
+      int btnY = 200;
       int btnWidth = 150;
       int btnHeight = 50;
 
@@ -174,7 +150,7 @@ namespace UHFReader
       this.btnIn.Location = new System.Drawing.Point(20, btnY);
       this.btnIn.Name = "btnIn";
       this.btnIn.Size = new System.Drawing.Size(btnWidth, btnHeight);
-      this.btnIn.TabIndex = 7;
+      this.btnIn.TabIndex = 5;
       this.btnIn.Text = "📥 入库";
       this.btnIn.UseVisualStyleBackColor = false;
       this.btnIn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -189,7 +165,7 @@ namespace UHFReader
       this.btnOut.Location = new System.Drawing.Point(20 + btnWidth + 20, btnY);
       this.btnOut.Name = "btnOut";
       this.btnOut.Size = new System.Drawing.Size(btnWidth, btnHeight);
-      this.btnOut.TabIndex = 8;
+      this.btnOut.TabIndex = 6;
       this.btnOut.Text = "📤 出库";
       this.btnOut.UseVisualStyleBackColor = false;
       this.btnOut.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -205,7 +181,7 @@ namespace UHFReader
       this.btnScan.Location = new System.Drawing.Point(20, scanBtnY);
       this.btnScan.Name = "btnScan";
       this.btnScan.Size = new System.Drawing.Size(310, 40);
-      this.btnScan.TabIndex = 9;
+      this.btnScan.TabIndex = 7;
       this.btnScan.Text = "📡 扫描标签";
       this.btnScan.UseVisualStyleBackColor = false;
       this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -219,8 +195,6 @@ namespace UHFReader
       this.panelLeft.Controls.Add(this.txtEpc);
       this.panelLeft.Controls.Add(this.lblMedicine);
       this.panelLeft.Controls.Add(this.cmbMedicine);
-      this.panelLeft.Controls.Add(this.lblQuantity);
-      this.panelLeft.Controls.Add(this.numQuantity);
       this.panelLeft.Controls.Add(this.lblTagStatus);
       this.panelLeft.Controls.Add(this.btnIn);
       this.panelLeft.Controls.Add(this.btnOut);
@@ -318,8 +292,6 @@ namespace UHFReader
     private System.Windows.Forms.TextBox txtEpc;
     private System.Windows.Forms.Label lblMedicine;
     private System.Windows.Forms.ComboBox cmbMedicine;
-    private System.Windows.Forms.Label lblQuantity;
-    private System.Windows.Forms.NumericUpDown numQuantity;
     private System.Windows.Forms.Label lblTagStatus;
     private System.Windows.Forms.Button btnIn;
     private System.Windows.Forms.Button btnOut;

@@ -79,13 +79,11 @@ namespace UHFReader
       }
 
       int medicineId = Convert.ToInt32(cmbMedicine.SelectedValue);
-      int quantity = Convert.ToInt32(numQuantity.Value);
 
-      if (_transactionBll.StockIn(epc, medicineId, quantity, CurrentUser.User.Id, CurrentUser.User.Username))
+      if (_transactionBll.StockIn(epc, medicineId, CurrentUser.User.Id, CurrentUser.User.Username))
       {
-        MessageBox.Show($"入库成功！数量：{quantity}", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show("入库成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         txtEpc.Clear();
-        numQuantity.Value = 1;
         lblTagStatus.Text = "标签状态: -";
         LoadRecords();
       }
@@ -111,13 +109,11 @@ namespace UHFReader
       }
 
       int medicineId = Convert.ToInt32(cmbMedicine.SelectedValue);
-      int quantity = Convert.ToInt32(numQuantity.Value);
 
-      if (_transactionBll.StockOut(epc, medicineId, quantity, CurrentUser.User.Id, CurrentUser.User.Username))
+      if (_transactionBll.StockOut(epc, medicineId, CurrentUser.User.Id, CurrentUser.User.Username))
       {
-        MessageBox.Show($"出库成功！数量：{quantity}", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show("出库成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         txtEpc.Clear();
-        numQuantity.Value = 1;
         lblTagStatus.Text = "标签状态: -";
         LoadRecords();
       }
@@ -141,10 +137,12 @@ namespace UHFReader
       if (dgvRecords.Columns["MedicineName"] != null) dgvRecords.Columns["MedicineName"].HeaderText = "药品名称";
       if (dgvRecords.Columns["TagId"] != null) dgvRecords.Columns["TagId"].HeaderText = "标签ID";
       if (dgvRecords.Columns["Epc"] != null) dgvRecords.Columns["Epc"].HeaderText = "电子标签号";
-      if (dgvRecords.Columns["Quantity"] != null) dgvRecords.Columns["Quantity"].HeaderText = "数量";
       if (dgvRecords.Columns["OperatorId"] != null) dgvRecords.Columns["OperatorId"].HeaderText = "操作员ID";
       if (dgvRecords.Columns["OperatorName"] != null) dgvRecords.Columns["OperatorName"].HeaderText = "操作员";
       if (dgvRecords.Columns["CreateTime"] != null) dgvRecords.Columns["CreateTime"].HeaderText = "操作时间";
+      
+      // 隐藏数量列
+      if (dgvRecords.Columns["Quantity"] != null) dgvRecords.Columns["Quantity"].Visible = false;
     }
 
     private void btnRefresh_Click(object sender, EventArgs e)

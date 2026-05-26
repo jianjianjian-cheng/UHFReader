@@ -43,7 +43,7 @@ namespace UHFReader
       if (dgvTransactions.Columns["MedicineName"] != null) dgvTransactions.Columns["MedicineName"].HeaderText = "药品名称";
       if (dgvTransactions.Columns["TagId"] != null) dgvTransactions.Columns["TagId"].HeaderText = "标签ID";
       if (dgvTransactions.Columns["Epc"] != null) dgvTransactions.Columns["Epc"].HeaderText = "电子标签号";
-      if (dgvTransactions.Columns["Quantity"] != null) dgvTransactions.Columns["Quantity"].HeaderText = "数量";
+      if (dgvTransactions.Columns["Quantity"] != null) dgvTransactions.Columns["Quantity"].Visible = false;
       if (dgvTransactions.Columns["OperatorId"] != null) dgvTransactions.Columns["OperatorId"].HeaderText = "操作员ID";
       if (dgvTransactions.Columns["OperatorName"] != null) dgvTransactions.Columns["OperatorName"].HeaderText = "操作员";
       if (dgvTransactions.Columns["CreateTime"] != null) dgvTransactions.Columns["CreateTime"].HeaderText = "操作时间";
